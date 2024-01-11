@@ -33,12 +33,12 @@
                         <template #item="monitor">
                             <div class="item">
                                 <div class="row">
-                                    <div class="col-9 col-md-8 small-padding">
+                                    <div class="col-md-8 small-padding">
                                         <div class="info">
                                             <font-awesome-icon v-if="editMode" icon="arrows-alt-v" class="action drag me-3" />
                                             <font-awesome-icon v-if="editMode" icon="times" class="action remove me-3" @click="removeMonitor(group.index, monitor.index)" />
 
-                                            <Uptime :monitor="monitor.element" type="24" :pill="true" />
+                                            <!-- <Uptime :monitor="monitor.element" type="24" :pill="true" /> -->
                                             <a
                                                 v-if="showLink(monitor)"
                                                 :href="monitor.element.url"
@@ -70,9 +70,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div :key="$root.userHeartbeatBar" class="col-3 col-md-4">
-                                        <HeartbeatBar size="mid" :monitor-id="monitor.element.id" />
+                                    <div class="col-3 col-md-4 small-padding text-center">
+                                        <span class="badge rounded-pill" :class=" 'bg-' + showStatus(monitor).color" style="font-size: 20px;">{{ showStatus(monitor).text }}</span>
                                     </div>
+                                    <!-- <div :key="$root.userHeartbeatBar" class="col-3 col-md-4">
+                                        <HeartbeatBar size="mid" :monitor-id="monitor.element.id" />
+                                    </div> -->
                                 </div>
                             </div>
                         </template>
@@ -87,16 +90,16 @@
 <script>
 import MonitorSettingDialog from "./MonitorSettingDialog.vue";
 import Draggable from "vuedraggable";
-import HeartbeatBar from "./HeartbeatBar.vue";
-import Uptime from "./Uptime.vue";
+// import HeartbeatBar from "./HeartbeatBar.vue";
+// import Uptime from "./Uptime.vue";
 import Tag from "./Tag.vue";
 
 export default {
     components: {
         MonitorSettingDialog,
         Draggable,
-        HeartbeatBar,
-        Uptime,
+        // HeartbeatBar,
+        // Uptime,
         Tag,
     },
     props: {
@@ -191,6 +194,18 @@ export default {
                 return "#059669";
             }
             return "#DC2626";
+        },
+        /**
+         * Returns monitor status based on its id
+         * @param {Object} monitor Monitor to show expiry for
+         * @returns {string}
+         */
+
+        showStatus(monitor) {
+            if (this.$root.statusList[monitor.element.id]) {
+                return this.$root.statusList[monitor.element.id];
+            }
+            return { };
         },
     }
 };

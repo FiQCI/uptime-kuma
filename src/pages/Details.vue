@@ -66,12 +66,12 @@
 
             <div class="shadow-box">
                 <div class="row">
-                    <div class="col-md-8">
-                        <HeartbeatBar :monitor-id="monitor.id" />
+                    <div class="col-md-8 small-padding">
+                        <!-- <HeartbeatBar :monitor-id="monitor.id" /> -->
                         <span class="word">{{ $t("checkEverySecond", [ monitor.interval ]) }}</span>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <span class="badge rounded-pill" :class=" 'bg-' + status.color " style="font-size: 30px;">{{ status.text }}</span>
+                    <div class="col-3 col-md-4 small-padding text-center">
+                        <span class="badge rounded-pill" :class=" 'bg-' + status.color " style="font-size: 20px;">{{ status.text }}</span>
                     </div>
                 </div>
             </div>
@@ -266,7 +266,7 @@ import { defineAsyncComponent } from "vue";
 import { useToast } from "vue-toastification";
 const toast = useToast();
 import Confirm from "../components/Confirm.vue";
-import HeartbeatBar from "../components/HeartbeatBar.vue";
+// import HeartbeatBar from "../components/HeartbeatBar.vue";
 import Status from "../components/Status.vue";
 import Datetime from "../components/Datetime.vue";
 import CountUp from "../components/CountUp.vue";
@@ -291,7 +291,7 @@ export default {
         Uptime,
         CountUp,
         Datetime,
-        HeartbeatBar,
+        // HeartbeatBar,
         Confirm,
         Status,
         Pagination,
