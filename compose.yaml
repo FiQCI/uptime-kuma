@@ -1,6 +1,6 @@
 services:
   uptime-kuma:
-    image: modupefalodun/uptime-kuma
+    image: docker-registry.rahti.csc.fi/fiqci-workspace/uptime-kuma:v1.0
     volumes:
       - ./data:/app/data
     ports:
