@@ -1,6 +1,6 @@
 <template>
     <div ref="wrap" class="wrap" :style="wrapStyle">
-        <div class="hp-bar-big" :style="barStyle">
+        <!-- <div class="hp-bar-big" :style="barStyle">
             <div
                 v-for="(beat, index) in shortBeatList"
                 :key="index"
@@ -9,7 +9,7 @@
                 :style="beatStyle"
                 :title="getBeatTitle(beat)"
             />
-        </div>
+        </div> -->
         <div
             v-if="!$root.isMobile && size !== 'small' && beatList.length > 4 && $root.styleElapsedTime !== 'none'"
             class="d-flex justify-content-between align-items-center word" :style="timeStyle"
